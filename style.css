@@ -1,0 +1,15 @@
+i.arrow {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+i:active {
+    font-size: 35px;
+}
+
+#slider {
+    transition: all 0.5s ease-in-out;
+}
+
+div > h1, p {
+    text-shadow: 0 0 10px black;

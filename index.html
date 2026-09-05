@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- Bu dosyanın HTML5 standardını kullandığını tarayıcıya bildirir. -->
+<html lang="en">
+<!-- Sayfanın HTML bölümünün başladığını belirtir. -->
+<head>
+    <!-- Türkçe karakterlerin düzgün görünmesini sağlar. -->
+    <meta charset="UTF-8">
+    <!-- Sayfanın telefon, tablet ve bilgisayara uyum sağlamasını sağlar. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tarayıcı sekmesinde görünecek sayfa başlığıdır. -->
+    <title>Document</title>
+    <!-- Tailwind CSS sınıflarını kullanabilmek için Tailwind'i yükler. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Kendi CSS dosyanı sayfaya bağlar. -->
+    <link rel="stylesheet" href="style.css">
+    <!-- jQuery kütüphanesini yükler; aşağıdaki $ işareti jQuery'den gelir. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Ok işaretlerini kullanabilmek için Bootstrap Icons'u yükler. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<!-- head bölümünün bittiğini belirtir. -->
+</head>
+
+<!-- Kullanıcıya görünen bütün içerik body içinde bulunur. -->
+<body>
+    <!-- h-screen: yüksekliği ekran kadar yapar. -->
+    <!-- w-screen: genişliği ekran kadar yapar. -->
+    <!-- relative: içindeki absolute elemanın konumunu bu alanı referans almasını sağlar. -->
+    <!-- overflow-y-hidden: dikey taşan içeriği gizler. -->
+    <header class="h-screen w-screen relative overflow-hidden">
+
+        <!-- id="slider": JavaScript'in bu kutuyu bulabilmesi için verilen isimdir. -->
+        <!-- absolute: kutuyu normal akıştan çıkarır ve konumunu serbestçe ayarlamamızı sağlar. -->
+        <!-- top-0 ve left-0: kutuyu üst ve sol kenardan başlatır. -->
+        <!-- h-screen: slider'ın yüksekliğini ekran kadar yapar. -->
+        <!-- w-[300vw]: üç ekran genişliği verir; 100vw + 100vw + 100vw = 300vw. -->
+        <!-- flex: içindeki resim kutularını yan yana dizmeyi sağlar. -->
+        <!-- flex-row: elemanların soldan sağa yatay dizilmesini sağlar. -->
+        <!-- justify-start: elemanları yatayda en soldan başlatır. -->
+        <!-- items-stretch: elemanları çapraz eksende uzatır; burada h-screen olduğu için zorunlu değildir. -->
+        <div id="slider" class="slider absolute top-0 left-0 h-screen w-[300vw] flex flex-row justify-start items-stretch">
+
+            <!-- slide: JavaScript'in bütün resim kutularını bulabilmesi için ortak sınıftır. -->
+            <!-- active: şu an ilk resmin aktif olduğunu belirtir; mevcut CSS/JS'de ayrıca kullanılmıyor. -->
+            <!-- h-screen: bu resim kutusunu ekran yüksekliğinde yapar. -->
+            <!-- w-[100vw]: bu resim kutusunu tam bir ekran genişliğinde yapar. -->
+            <!-- flex-none: flex kutusunun bu elemanı küçültmesini engeller. -->
+            <div class="slide relative active h-screen w-[100vw] flex-none flex flex-col justify-center items-center">
+                <!-- src: gösterilecek resmin dosya yoludur. -->
+                <!-- alt: resim yüklenemezse veya ekran okuyucu kullanılırsa açıklama verir. -->
+                <!-- block: resmin satır içi boşluk oluşturmasını engeller. -->
+                <!-- w-full ve h-full: resmi bulunduğu kutunun tamamına yayar. -->
+                <!-- object-cover: resmi kutuyu tamamen kaplayacak şekilde kırpar veya büyütür. -->
+                <img src="imgs/slide1.jpg" alt="Slide 1" class="block w-full h-full object-cover">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white gap-8">
+                <h1 class="text-7xl font-bold">SLIDE 1</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, id?</p>
+                </div>
+            </div>
+
+            <!-- İkinci resim de aynı şekilde kendi ekran genişliğindeki kutuda durur. -->
+             <div class="slide h-screen w-[100vw] flex-none relative">
+                <img src="imgs/slide2.jpg" alt="Slide 2" class="block w-full h-full object-cover">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white gap-8">
+                <h1 class="text-7xl font-bold">SLIDE 2</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, id?</p>
+                </div>
+            </div>
+
+            <!-- Üçüncü resim de ikinci resmin hemen yanında durur. -->
+             <div class="slide h-screen w-[100vw] flex-none relative">
+                <img src="imgs/slide3.jpg" alt="Slide 3" class="block w-full h-full object-cover">
+                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white gap-8">
+                <h1 class="text-7xl font-bold">SLIDE 3</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero, id?</p>
+                </div>
+            </div>
+            
+        <!-- Slider kutusunun kapanışı. -->
+        </div>
+
+        <!-- i etiketi burada sola tıklanabilen ok butonu gibi kullanılır. -->
+        <!-- id="leftarrow": JavaScript'in sol oku bulmasını sağlar. -->
+        <!-- p-2: okun çevresine iç boşluk verir. -->
+        <!-- bg-black/70: yüzde 70 saydam siyah arka plan verir. -->
+        <!-- hover:bg-black: fare üzerine gelince arka planı tamamen siyah yapar. -->
+        <!-- rounded-lg: köşeleri yuvarlatır. -->
+        <!-- bi bi-arrow-left-short: Bootstrap Icons'tan sol ok şeklini getirir. -->
+        <!-- text-white: okun rengini beyaz yapar. -->
+        <!-- fixed: oku ekranın belirli bir yerine sabitler. -->
+        <!-- top-1/2: üstten ekranın yüzde 50'sine yerleştirir. -->
+        <!-- -translate-y-1/2: okun kendi yüksekliğinin yarısı kadar yukarı alarak tam ortalar. -->
+        <!-- left-8: oku ekranın solundan biraz içeride tutar. -->
+        <i id="leftarrow" class="arrow p-2 bg-black/70 hover:bg-black rounded-lg bi bi-arrow-left-short text-white fixed top-1/2 -translate-y-1/2 left-8"></i>
+
+        <!-- Bu ok butonu sağa geçmek için kullanılır. -->
+        <!-- right-8: butonu ekranın sağından biraz içeride tutar. -->
+        <i id="rightarrow" class="arrow p-2 bg-black/70 hover:bg-black rounded-lg bi bi-arrow-right-short text-white fixed top-1/2 -translate-y-1/2 right-8"></i>
+        
+           
+    </header>
+</body>
+
+<!-- JavaScript kodlarının başladığı bölüm. -->
+<script>
+
+// Sayfa tamamen hazır olduktan sonra içindeki kodları çalıştırır.
+
+let index = 0;
+
+let leftarrow = document.getElementById("leftarrow");
+let rightarrow = document.getElementById("rightarrow");
+let slider = document.getElementById("slider");
+// class'ı slide olan bütün resim kutularını bulur.
+// length ile kaç tane slide olduğunu öğrenebiliriz.
+let slides = document.querySelectorAll(".slide");
+
+leftarrow.addEventListener("click", function() {
+
+    // İlk resimde değilsek bir önceki resme geçer.
+    if ( index > 0 ) {
+        index--;
+    }
+
+    // index değerine göre slider'ı sola kaydırır.
+    slider.style.transform = "translateX(-" + (index * 100) + "vw)";
+
+
+
+});
+
+rightarrow.addEventListener("click", function() {
+
+    // Son resimde değilsek bir sonraki resme geçer.
+    if ( index < slides.length - 1 ) {
+        index++;
+    }
+
+    // index değerine göre slider'ı sola kaydırır.
+    slider.style.transform = "translateX(-" + (index * 100) + "vw)";
+
+});
+
+
+</script>
